@@ -8,6 +8,13 @@ float calculaMediaPonderada(float array[], int size){
     return total/size; 
 }
 
+float calculaMS(float media){
+    return media*1.1;
+}
+
+float calculaMI(float media){
+    return media*0.9;
+}
 
 int main(){
 
@@ -15,8 +22,10 @@ int main(){
     float mediaPonderada, ms, mi;
 
     mediaPonderada = calculaMediaPonderada(notas, sizeof(notas)/4);
+    ms = calculaMS(mediaPonderada);
+    mi = calculaMI(mediaPonderada);
 
-    printf("media ponderada: %.2f\n", mediaPonderada);
+    printf("media ponderada: %.2f\nMS: %.2f\nMI: %.2f\n", mediaPonderada, ms, mi);
 
     return 0;
 }
