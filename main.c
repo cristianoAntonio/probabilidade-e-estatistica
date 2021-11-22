@@ -1,29 +1,18 @@
 #include <stdio.h>
 
 float calculaMS(float media){
-    printf("MS = MEDIA PONDERADA + 10%%\nMS = %.2f * 1.1 = %.2f\n", media, media*1.1);
+    printf("\tMS = MEDIA PONDERADA + 10%%\n\tMS = %.2f * 1.1 = %.2f\n", media, media*1.1);
     return media*1.1;
 }
 
 float calculaMI(float media){
-    printf("MI = MEDIA PONDERADA - 10%%\nMI = %.2f * 0.9 = %.2f\n", media, media*0.9);
+    printf("\tMI = MEDIA PONDERADA - 10%%\n\tMI = %.2f * 0.9 = %.2f\n", media, media*0.9);
     return media*0.9;
-}
-
-float lista2B(float array[], int size, float nota){
-    int cont = 0;
-    for(int i=0;i<size;i++){
-        if(array[i]==nota){
-            cont++;
-        }
-    }
-    cont--;
-    return cont*100/(size-1);
 }
 
 float calculaMP(float array[], int size){
     float cont=0;
-    printf("MEDIA PONDERADA = (");
+    printf("\tMEDIA PONDERADA = (");
     for(int i=0;i<size;i++){
         cont+=array[i];
         if(i==(size-1)){
@@ -37,7 +26,7 @@ float calculaMP(float array[], int size){
 
 void lista2_A(float array[], int size){
     float mp, ms, mi, prob;
-    printf("Lista 2 questao A)\n");
+    printf("Questao A)\n");
     mp = calculaMP(array, size);
     ms = calculaMS(mp);
     mi = calculaMI(mp);
@@ -51,29 +40,37 @@ void lista2_A(float array[], int size){
         }
     }
     prob = (contMI+contMS)*100/size;
-    printf("probabilidade que uma nota sorteada da amostra seja menor que MI ou maior que MS:\n");
-    printf("Quantidade de notas menores que MI: %d\n", contMI);
-    printf("Quantidade de notas maiores que MS: %d\n", contMS);
-    printf("Quantidade total de notas: %d\n", size);
-    printf("PROBABILIDADE: %.2f%%\n", prob);
+    printf("\tprobabilidade que uma nota sorteada da amostra seja menor que MI ou maior que MS:\n");
+    printf("\tQuantidade de notas menores que MI: %d\n", contMI);
+    printf("\tQuantidade de notas maiores que MS: %d\n", contMS);
+    printf("\tQuantidade total de notas: %d\n", size);
+    printf("\tCalculo de porcentagem: \n\t\t(%d+%d)*100/(%d) = %.2f%%\n", contMS, contMI, size, prob);
+}
+
+void lista2_B(float array[], int size, float nota){
+    printf("\nQuestao B)\n");
+    int cont = 0;
+    float prob;
+    for(int i=0;i<size;i++){
+        if(array[i]==nota){
+            cont++;
+        }
+    }
+    cont--;
+    prob = cont*100/(size-1);
+    printf("\tNota repetida: %.1f\n", nota);
+    printf("\tNumero de notas iguais a repetida: %d\n", cont);
+    printf("\tCalculo de porcentagem: \n\t\t%d*100/(%d-1) = %.2f%%\n", cont, size, prob);
 }
 
 int main(){
 
     float notas[] = {10.0, 6.8, 8.5, 7.0, 6.8, 7.5, 8.2, 10.0, 10.0,8.5, 7.0, 9.5, 9.5};
+    float notaRepetida=10;
     
+    printf("\n\t\t\t\t\t\tLISTA 2\n\n");
     lista2_A(notas, sizeof(notas)/4);
-    /*
-    float mediaPonderada, ms, mi;
-
-    mediaPonderada = calculaMediaPonderada(notas, sizeof(notas)/4);
-    ms = calculaMS(mediaPonderada);
-    mi = calculaMI(mediaPonderada);
+    lista2_B(notas, sizeof(notas)/4, notaRepetida);
     
-    printf("media ponderada: %.2f\nMS: %.2f\nMI: %.2f\n", mediaPonderada, ms, mi);
-    printf("probA: %.2f%%\n", lista2A(notas, sizeof(notas)/4, ms, mi));
-    printf("probB: %.2f%%\n", lista2B(notas, sizeof(notas)/4, 10));
-    */
-
     return 0;
 }
