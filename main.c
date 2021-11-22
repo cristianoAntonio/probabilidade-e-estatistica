@@ -16,7 +16,7 @@ float calculaMI(float media){
     return media*0.9;
 }
 
-int lista2A(float array[], int size, float ms, float mi){
+float lista2A(float array[], int size, float ms, float mi){
     int cont = 0;
     for(int i=0; i<size; i++){
         if(array[i]<mi || array[i]>ms){
@@ -24,6 +24,17 @@ int lista2A(float array[], int size, float ms, float mi){
         }
     }
     return cont*100/size;
+}
+
+float lista2B(float array[], int size, float nota){
+    int cont = 0;
+    for(int i=0;i<size;i++){
+        if(array[i]==nota){
+            cont++;
+        }
+    }
+    cont--;
+    return cont*100/(size-1);
 }
 
 int main(){
@@ -35,9 +46,9 @@ int main(){
     ms = calculaMS(mediaPonderada);
     mi = calculaMI(mediaPonderada);
     
-    printf("prob: %d%%\n", lista2A(notas, sizeof(notas)/4, ms, mi));
-
     printf("media ponderada: %.2f\nMS: %.2f\nMI: %.2f\n", mediaPonderada, ms, mi);
+    printf("probA: %.2f%%\n", lista2A(notas, sizeof(notas)/4, ms, mi));
+    printf("probB: %.2f%%\n", lista2B(notas, sizeof(notas)/4, 10));
 
     return 0;
 }
