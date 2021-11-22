@@ -66,6 +66,7 @@ void lista2_B(float array[], int size, float nota){
 int main(){
 
     float notas[] = {10.0, 6.8, 8.5, 7.0, 6.8, 7.5, 8.2, 10.0, 10.0,8.5, 7.0, 9.5, 9.5};
+    //escolha uma nota repetida da sua lista de notas e coloque na "notaRepetida"
     float notaRepetida=10;
     
     printf("\n\t\t\t\t\t\tLISTA 2\n\n");
